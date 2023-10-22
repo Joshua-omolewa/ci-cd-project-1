@@ -24,5 +24,8 @@ jobs:
             - name: login into docker hub
               run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u $docker_username --password-stdin  #using --password-stdin as this is recommend way to provide password for dockerhub
 
-            - name: push image to docker hub
-              run: docker push joshimage:1.0
+            - name: Tagging local joshimage image built to  repo to be create in dockerhub
+              run: docker tag joshimage:1.0 ${{ secrets.DOCKERHUB_USERNAME }}/ci-cd-josh:1.0
+
+            - name: push tagged image to docker hub
+              run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/ci-cd-josh:1.0

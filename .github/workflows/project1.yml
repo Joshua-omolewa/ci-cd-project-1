@@ -22,7 +22,7 @@ jobs:
               run: docker build -t joshimage:1.0 . #build the docker image with the tag with joshimage as name and tag 1.0 , the  . means current folder for Docker file
             
             - name: login into docker hub
-              run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u $docker_username --password-stdin  #using --password-stdin as this is recommend way to provide password for dockerhub
+              run: echo $docker_password | docker login -u $docker_username --password-stdin  #using --password-stdin as this is recommend way to provide password for dockerhub
 
             - name: Tagging local joshimage image built to  repo to be create in dockerhub
               run: docker tag joshimage:1.0 ${{ secrets.DOCKERHUB_USERNAME }}/ci-cd-josh:1.0

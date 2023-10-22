@@ -10,7 +10,7 @@ FROM python:3.8
 #create a workfolder in the image to make sure all the works done in the folder
 WORKDIR /app
 
-# install lastest pandas 
-RUN pip install pandas==2.1.1 
+# install  pandas 
+RUN pip install pandas==2.0.2
 
 

@@ -37,7 +37,7 @@ Practicing CI/CD using github actions
 * Inside the workflows folder I create a new file called project1.yml
 * I create a Dockerfile in the main directory for my project with codes in it as seen below
  
-* I input the secret for password to my docker hub
+* I input the secrets (username & password)  to my docker hub into GitHub secrets and analysis which is found in the settings.  So I can access the secrets  in github action workflow file
 * Inside the project1.yml I construct the git action workflows to first build a docker image, tag the local image, login into docker hub  and push image to docker hub
  
 

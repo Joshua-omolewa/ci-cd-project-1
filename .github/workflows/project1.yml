@@ -1,0 +1,16 @@
+name: Build docker image and push to docker hub
+
+on: 
+    push:
+        branches:
+            - main
+
+
+jobs:
+    build:
+        runs-on: ubuntu-lastest
+        steps:
+            - uses: actions/checkout@v2
+            - name: Echo GitHub Actions # The name of the step
+              run: echo "Hello GitHub Actions"
+

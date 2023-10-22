@@ -23,3 +23,6 @@ jobs:
             
             - name: login into docker hub
               run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u $docker_username --password-stdin  #using --password-stdin as this is recommend way to provide password for dockerhub
+
+            - name: push image to docker hub
+              run: docker push $docker_username/josh-ci-cd-image:1.0

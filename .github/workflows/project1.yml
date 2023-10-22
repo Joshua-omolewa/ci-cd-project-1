@@ -1,4 +1,4 @@
-name: Build docker image and push to docker hub
+name: Build docker image and push to docker hub #name of workflow
 
 on: 
     push:
@@ -6,11 +6,20 @@ on:
             - main
 
 
+env:
+    docker_username: ${{ secrets.DOCKERHUB_USERNAME }}
+    docker_password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+
 jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
-            - name: Echo GitHub Actions # The name of the step
-              run: echo "Hello GitHub Actions"
+            - name: Checkout code
+              uses: actions/checkout@v4 # The checkout action in GitHub Actions is used to fetch the source code of your repository into the runner environment where your workflow is executing
 
+            - name: Build docker image # The name of the step
+              run: docker build -t joshimage:1.0 . #build the docker image with the tag with joshimage as name and tag 1.0 , the  . means current folder for Docker file
+            
+            - name: login into docker hub
+              run: docker login -u $docker_username -p $docker_password
